@@ -14,11 +14,13 @@ const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"
 
 export async function analyzeResume(
   file: File,
-  jobDescription: string
+  jobDescription: string,
+  userId: string = "anonymous"
 ): Promise<AnalysisResult> {
   const formData = new FormData()
   formData.append("file", file)
   formData.append("job_description", jobDescription)
+  formData.append("user_id", userId)
   const res = await fetch(`${BASE_URL}/analyze`, {
     method: "POST",
     body: formData,
