@@ -56,7 +56,7 @@ export default function LandingPage() {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6 animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
-            <Link href="/login">
+            <Link href="/sign-in">
               <Button size="lg" className="bg-gradient-to-r from-[#6C63FF] to-[#8B7AFF] hover:from-[#5B52E5] hover:to-[#7A69E5] text-white px-8 py-6 text-lg">
                 Analyze My Resume
                 <ArrowRight className="ml-2 w-5 h-5" />
@@ -70,7 +70,7 @@ export default function LandingPage() {
           {/* Already have account link */}
           <p className="text-sm text-zinc-400 mb-10 animate-fade-in-up" style={{ animationDelay: "0.35s" }}>
             Already have an account?{" "}
-            <Link href="/login" className="text-[#6C63FF] hover:text-[#8B7AFF] transition-colors">
+            <Link href="/sign-in" className="text-[#6C63FF] hover:text-[#8B7AFF] transition-colors">
               Sign in
             </Link>
           </p>
