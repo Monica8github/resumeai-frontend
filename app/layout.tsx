@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Plus_Jakarta_Sans, Sora } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { SessionProvider } from 'next-auth/react'
 import './globals.css'
 
 const plusJakartaSans = Plus_Jakarta_Sans({ 
@@ -44,7 +45,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={`${plusJakartaSans.variable} ${sora.variable} font-sans antialiased`}>
-        {children}
+        <SessionProvider>
+          {children}
+        </SessionProvider>
         <Analytics />
       </body>
     </html>
