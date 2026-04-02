@@ -1,55 +1,21 @@
-import type { Metadata } from 'next'
-import { Plus_Jakarta_Sans, Sora } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
-import { SessionProvider } from 'next-auth/react'
-import './globals.css'
+import type { Metadata } from "next"
+import { Inter } from "next/font/google"
+import "./globals.css"
+import { ClerkProvider } from "@clerk/nextjs"
 
-const plusJakartaSans = Plus_Jakarta_Sans({ 
-  subsets: ['latin'],
-  variable: '--font-plus-jakarta-sans',
-})
-
-const sora = Sora({ 
-  subsets: ['latin'],
-  variable: '--font-sora',
-})
+const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: 'ResumeAI - AI-Powered Resume Analyzer',
-  description: 'Analyze your resume with GPT-4o and land your dream job. Get instant feedback, skill gap detection, and smart improvement suggestions.',
-  generator: 'v0.app',
-  icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
-  },
+  title: "ResumeAI",
+  description: "AI Resume Analyzer",
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="dark">
-      <body className={`${plusJakartaSans.variable} ${sora.variable} font-sans antialiased`}>
-        <SessionProvider>
-          {children}
-        </SessionProvider>
-        <Analytics />
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body className={inter.className}>{children}</body>
+      </html>
+    </ClerkProvider>
   )
 }
